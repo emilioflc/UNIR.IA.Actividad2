@@ -11,6 +11,15 @@ node_modules
 dist
 dist-ssr
 *.local
+playwright-report
+playwright/.cache
+test-results
+
+# Playwright traces/screenshots
+*.zip
+*.webm
+*.trace
+*.png
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +31,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+playwright-report

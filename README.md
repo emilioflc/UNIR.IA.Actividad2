@@ -40,3 +40,42 @@ Aplicación web para administrar un listado de tareas con soporte para añadir, 
 - `npm run build`: genera la versión optimizada para producción.
 - `npm run preview`: sirve localmente el build generado.
 - `npm run lint`: ejecuta las reglas de ESLint configuradas.
+
+## Pruebas automatizadas
+
+### 1. Preparación del entorno de pruebas
+
+Ejecuta una sola vez después de clonar el repositorio para instalar dependencias del proyecto y los navegadores que usa Playwright:
+
+```bash
+npm install
+npx playwright install
+```
+
+`npx playwright install` descarga los navegadores soportados (Chromium por defecto) necesarios para las pruebas E2E. Solo hace falta repetirlo si actualizas Playwright o cambias de máquina.
+
+### 2. Pruebas unitarias
+
+Verifica la lógica aislada de componentes principales, mockeando el DOM y `localStorage` con Vitest + Testing Library:
+
+```bash
+npm run test:unit
+```
+
+### 3. Pruebas de integración
+
+Ejecuta los flujos completos dentro de la aplicación React (formularios, tabla y persistencia en `localStorage`):
+
+```bash
+npm run test:integration
+```
+
+### 4. Pruebas E2E / interfaz
+
+Levanta automáticamente Vite y usa Playwright para interactuar con la app en un navegador real. Asegúrate de haber corrido la preparación del punto 1 antes de la primera ejecución:
+
+```bash
+npm run test:e2e
+```
+
+Los reportes HTML de Playwright se almacenan en la carpeta `playwright-report/` y pueden abrirse con `npx playwright show-report` tras una corrida.
