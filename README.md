@@ -11,8 +11,10 @@ Aplicación web para administrar un listado de tareas con soporte para añadir, 
 1. **Instalar dependencias**
 
 	```bash
-	npm install
+	./scripts/setup-tests.sh
 	```
+
+	Si es la primera ejecución en tu máquina recuerda conceder permisos de ejecución: `chmod +x scripts/setup-tests.sh`. El script instala los paquetes de `npm` y descarga los navegadores necesarios para Playwright (en Linux incluye las dependencias del sistema con `--with-deps`).
 
 2. **Iniciar el servidor de desarrollo**
 
@@ -45,14 +47,13 @@ Aplicación web para administrar un listado de tareas con soporte para añadir, 
 
 ### 1. Preparación del entorno de pruebas
 
-Ejecuta una sola vez después de clonar el repositorio para instalar dependencias del proyecto y los navegadores que usa Playwright:
+Ejecuta una sola vez después de clonar el repositorio. El script instala las dependencias del proyecto, descarga los navegadores que usa Playwright y, en Linux, añade los paquetes del sistema requeridos:
 
 ```bash
-npm install
-npx playwright install
+./scripts/setup-tests.sh
 ```
 
-`npx playwright install` descarga los navegadores soportados (Chromium por defecto) necesarios para las pruebas E2E. Solo hace falta repetirlo si actualizas Playwright o cambias de máquina.
+Solo necesitas repetirlo si actualizas Playwright, reinstalas dependencias o cambias de máquina.
 
 ### 2. Pruebas unitarias
 
